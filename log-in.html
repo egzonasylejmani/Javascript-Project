@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XonaStudio</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"> <img src="/assets/images/egzz.png" alt=""></a>
+        <ul class="navmenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shopwomen.html">Shop Women</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="log-in.html">Login</a></li>
+        </ul>
+        <div class="nav-icon">
+            <a href="#"><i class='bx bx-search-alt'></i></a>
+
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-cart'></i></a>
+            <a href="#"><i class='bx bx-menu'></i></a>
+        </div>
+    </header>
+    
+<div class="flex login-register">
+    <div class="card">
+        <h2>Login Form</h2>
+        <div id="errorMessages" class="errorMessages"></div>
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+
+            <button type="submit" >Login</button>
+        </form>
+        <div class="switch">Don't have an account? <a href="register.html">Register here</a></div>
+    </div>
+</div>
+
+
+<script>
+function validateLogin() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var errorMessagesContainer = document.getElementById('errorMessages');
+    errorMessagesContainer.innerHTML = ''; // Clear previous error messages
+
+    // Check for empty fields
+    if (username === '' || password === '') {
+        displayErrorMessage('Both username and password are required.');
+        return false; // Prevent form submission
+    }
+
+    // Check minimum length requirements
+    if (username.length < 4 || password.length <script 4) {
+        displayErrorMessage('Username and password must be at least 4 characters long.');
+        return false; // Prevent form submission
+    }
+
+    return true;
+}
+</script>

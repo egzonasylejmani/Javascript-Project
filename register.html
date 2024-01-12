@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XonaStudio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"> <img src="egzz.png" alt=""></a>
+        <ul class="navmenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shopwomen.html">Shop Women</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="log-in.html">Login</a></li>
+        </ul>
+        <div class="nav-icon">
+            <a href="#"><i class='bx bx-search-alt'></i></a>
+
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-cart'></i></a>
+            <a href="#"><i class='bx bx-menu'></i></a>
+        </div>
+    </header>
+    <div class="flex login-register">
+    <div class="card">
+        <h2>Register Form</h2>
+        <div id="errorMessages" class="errorMessages"></div>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="Enter your full name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" placeholder="Enter your new password">
+
+            <button type="submit">Register</button>
+        </form>
+        <div class="switch">Already have an account? <a href="login.php">Login here</a></div>
+    </div>
+</div>
+
+
+
+<script>
+    function validateForm() {
+      var fullname = document.getElementById('fullname').value;
+      var email = document.getElementById('email').value;
+      var newPassword = document.getElementById('new-password').value;
+      var errorMessagesContainer = document.getElementById('errorMessages');
+      errorMessagesContainer.innerHTML = ''; // Clear previous error messages
+
+      // Check if all fields are filled
+      if (fullname === '' || email === '' || newPassword === '') {
+        displayErrorMessage('All fields are required.');
+        return false;
+      }
+
+      // Check if the username and password meet the length requirements
+      if (fullname.length < 4 || newPassword.length < 4) {
+        displayErrorMessage('Full name and password must be at least 4 characters long.');
+        return false;
+      }
+
+      // Check if the email is valid
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        displayErrorMessage('Invalid email format.');
+        return false;
+      }
+
+      // Check if the password meets the specified pattern
+      var passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+      if (!passwordRegex.test(newPassword)) {
+        displayErrorMessage('Password must be at least 8 characters long and include an uppercase letter.');
+        return false;
+      }
+
+      // Form is valid, allow submission
+      return true;
+    }
+
+    function displayErrorMessage(message) {
+      var errorMessagesContainer = document.getElementById('errorMessages');
+      var errorMessageElement = document.createElement('div');
+      errorMessageElement.className = 'error';
+      errorMessageElement.textContent = message;
+      errorMessagesContainer.appendChild(errorMessageElement);
+    }
+  </script>
